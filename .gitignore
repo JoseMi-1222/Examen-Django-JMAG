@@ -1,0 +1,80 @@
+# ---- Archivos y carpetas de Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ---- Entornos virtuales ----
+venv/
+env/
+.venv/
+.virtualenv/
+
+# ---- Django ----
+# Archivos de base de datos
+db.sqlite3
+db.sqlite3-journal
+
+# Archivos generados automáticamente
+*/migrations/__pycache__/
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Archivos estáticos generados
+staticfiles/
+static/
+media/
+
+# ---- Configuración local ----
+.env
+*.env
+.env.*
+.envrc
+*.local
+myvenv/
+
+# ---- VS Code ----
+.vscode/
+.code-workspace
+
+# Archivos temporales de la extensión Python
+.python-version
+
+# ---- Logs ----
+*.log
+logs/
+debug.log
+error.log
+
+# ---- Sistema operativo ----
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos de volcado (crash dumps)
+*.swp
+*.swo
+*.tmp
+
+# ---- Herramientas de análisis/formato ----
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+pytestdebug.log
+.cache/
+
+# ---- Docker (si usas) ----
+docker-compose.override.yml
