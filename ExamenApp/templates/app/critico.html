@@ -1,0 +1,11 @@
+{% for critico in critico %}
+    <h2>Crítico: {{ critico.critico }}</h2>
+    <p>Fabricante: {{ critico.videojuegoPlataforma.plataforma.fabricante }}</p>
+    <p>Estudio: {{ critico.videojuegoPlataforma.videojuego.estudio.nombre }}</p>
+    <p>Puntuación: {{ critico.puntuacion }}</p>
+    <p>Año de Análisis: {{ critico.anyo_analisis }}</p>
+    <p>Media de Puntuación: {{ critico.media_puntuacion }}</p>
+    <hr>
+{% empty %}
+    <p>No se encontraron análisis para el crítico especificado.</p>
+{% endfor %}

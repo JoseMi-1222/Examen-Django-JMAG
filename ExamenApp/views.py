@@ -102,11 +102,21 @@ def estudios_media_puntuacion(request, estudio):
     }
     return render(request, "app/estudios_media_puntuacion.html", contexto)
 
+#-------------------------------
+# VISTA: Crítico que ha dado la mayor puntuación a un videojuego de un fabricante y estudio determinados
+#-------------------------------
 
+def critico(request, critico, fabricante, estudio):
+    critico = Analisis.objects.filter(
+        critico__icontains=critico,
+        videojuego__estudio_desarrollo__nombre__icontains=estudio,
+        videojuego__videojuegoplataformas__plataforma__fabricante__icontains=fabricante
+    ).order_by('-puntuacion').first()
 
-
-
-    
+    contexto = {
+        'critico': critico
+    }
+    return render(request, "app/critico.html", contexto)
 
 
 
