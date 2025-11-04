@@ -26,4 +26,25 @@ def mi_error_400(request, exception=None):
 def index(request):
     return render(request, "app/index.html")
 
+#-------------------------------
+# VISTA: Videojuegos Fantasy en Estados Unidos
+#-------------------------------
+
+def fantasy_unidos(request, videojuego, pais):
+    fantasy_unidos = Videojuego.objects.filter(
+        titulo__icontains=videojuego,
+        estudio_desarrollo__sede__pais__icontains=pais
+    )
+
+    contexto = {
+        'fantasy_unidos': fantasy_unidos
+    }
+    return render(request, "app/videojuegos_fantasy_unidos.html", contexto)
+
+
+    
+
+
+
+
 

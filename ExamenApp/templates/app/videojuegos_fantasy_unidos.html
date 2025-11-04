@@ -1,0 +1,5 @@
+{% for juego in contexto.fantasy_unidos %}
+    {{ juego.videojuego.titulo }}<br>
+{% empty %}
+    <p>No se encontraron videojuegos que coincidan con los criterios.</p>
+{% endfor %}
