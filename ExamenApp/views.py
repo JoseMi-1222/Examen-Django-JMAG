@@ -73,6 +73,21 @@ def ventas_estimadas(request):
     }
     return render(request, "app/videojuegos_ventas_estimadas.html", contexto)
 
+#-------------------------------
+# VISTA: Estudios con análisis en un año concreto ordenados por puntuación
+#-------------------------------
+
+def estudios_analisis(request, anyo):
+    estudios_analisis = Estudio.objects.filter(
+        videojuego__analisis__anyo_analisis=anyo
+    ).order_by('-videojuego__analisis__puntuacion').distinct()
+
+    contexto = {
+        'estudios_analisis': estudios_analisis
+    }
+    return render(request, "app/estudios_analisis.html", contexto)
+
+
 
 
 
