@@ -80,7 +80,8 @@ class Plataforma(models.Model):
 class Videojuego(models.Model):
     titulo = models.CharField(max_length=200)
     estudio_desarrollo = models.ForeignKey('Estudio', on_delete=models.CASCADE)
-    VideojuegoPlataformas = models.ManyToManyField('Plataforma', through='VideojuegoPlataformas')
+    videojuego_plataformas = models.ManyToManyField('Plataforma', through='VideojuegoPlataformas')
+    ventas_estimadas = models.IntegerField(null=True)
 
 class VideojuegoPlataformas(models.Model):
     videojuego = models.ForeignKey('Videojuego', on_delete=models.CASCADE)

@@ -46,7 +46,8 @@ def fantasy_unidos(request, videojuego, pais):
 #-------------------------------
 
 def playstation_sony(request):
-    playstation_sony = Videojuego.objects.filter(
+    playstation_sony = Videojuego.objects.all()
+    playstation_sony = playstation_sony.filter(
         Q(videojuegoplataformas__plataforma__fabricante__icontains='Sony') |
         Q(videojuegoplataformas__plataforma__nombre__icontains='Play Station'),
         analisis__puntuacion__gt=75
@@ -56,6 +57,23 @@ def playstation_sony(request):
         'playstation_sony': playstation_sony
     }
     return render(request, "app/videojuegos_playstation_sony.html", contexto)
+
+#-------------------------------
+# VISTA: Videojuegos sin plataformas ordenados por ventas estimadas
+#-------------------------------
+
+def ventas_estimadas(request):
+    ventas_estimadas = Videojuego.objects.prefetch_related('videojuego_plataformas')
+    ventas_estimadas = ventas_estimadas.filter(
+        videojuego_plataformas__isnull=True
+    ).order_by('-ventas_estimadas')
+
+    contexto = {
+        'ventas_estimadas': ventas_estimadas
+    }
+    return render(request, "app/videojuegos_ventas_estimadas.html", contexto)
+
+
 
 
     
