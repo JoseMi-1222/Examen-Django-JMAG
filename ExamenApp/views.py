@@ -41,6 +41,22 @@ def fantasy_unidos(request, videojuego, pais):
     }
     return render(request, "app/videojuegos_fantasy_unidos.html", contexto)
 
+#-------------------------------
+# VISTA: Videojuegos de Play Station o Sony con alta puntuación
+#-------------------------------
+
+def playstation_sony(request):
+    playstation_sony = Videojuego.objects.filter(
+        Q(videojuegoplataformas__plataforma__fabricante__icontains='Sony') |
+        Q(videojuegoplataformas__plataforma__nombre__icontains='Play Station'),
+        analisis__puntuacion__gt=75
+    ).distinct()[:3]
+
+    contexto = {
+        'playstation_sony': playstation_sony
+    }
+    return render(request, "app/videojuegos_playstation_sony.html", contexto)
+
 
     
 

@@ -1,0 +1,8 @@
+{% for videojuego in playstation_sony %}
+    <h2>{{ videojuego.titulo }}</h2>
+    <p>Estudio: {{ videojuego.estudio_desarrollo.nombre }}</p>
+    <p>Puntuación: {{ videojuego.analisis.puntuacion }}</p>
+{% endfor %}
+{% if not playstation_sony %}
+    <p>No se encontraron videojuegos de PlayStation desarrollados por Sony.</p>
+{% endif %}

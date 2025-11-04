@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 """
+Ejer 1
 Dada la siguiente SQL, crea los Modelos, Urls y QuerySets correspondientes para mostrar los datos que se piden:
 
 SELECT 
@@ -22,6 +23,43 @@ LEFT JOIN
 WHERE 
     V.titulo LIKE '%Fantasy%' 
     AND S.pais LIKE '%Unidos%';
+"""
+"""
+Ejer 2
+Dada la siguiente SQL, crea los Modelos, Urls y QuerySets correspondientes para mostrar los datos que se piden:
+
+SELECT 
+    V.*,E.*,VP.*,P.*
+FROM 
+    videojuego V
+INNER JOIN 
+    videojuego_plataformas VP ON V.id = VP.videojuego_id
+INNER JOIN 
+    plataforma P ON VP.plataforma_id = P.id
+INNER JOIN
+    analisis A ON V.id = A.videojuego_id
+INNER JOIN 
+    estudio E ON V.estudio_desarrollo_id = E.id
+LEFT JOIN
+    sede S ON E.id = S.estudio_id
+WHERE 
+    P.fabricante LIKE 'Sony' 
+    OR p.nombre LIKE ‘%Play Station%’ 
+    AND A.puntuacion > 75
+LIMIT 3
+"""
+"""
+Ejer 3
+SELECT 
+    V.*
+FROM 
+    videojuego V
+LEFT JOIN 
+    videojuego_plataformas VP ON V.id = VP.videojuego_id
+WHERE 
+    VP.id IS NULL
+ORDER BY v.ventas_estimadas DESC
+
 """
 
 class Estudio(models.Model):
@@ -50,3 +88,5 @@ class VideojuegoPlataformas(models.Model):
 
 class Analisis(models.Model):
     videojuego = models.ForeignKey('Videojuego', on_delete=models.CASCADE)
+    puntuacion = models.IntegerField(null=True)
+    
