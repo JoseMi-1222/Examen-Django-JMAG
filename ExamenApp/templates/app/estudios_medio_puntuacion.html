@@ -1,0 +1,5 @@
+{% for videojuego in estudios_media_puntuacion %}
+    <h2>{{ videojuego.titulo }}</h2>
+    <p>Estudio: {{ videojuego.estudio_desarrollo.nombre }}</p>
+    <p>Media Puntuación: {{ videojuego.analisis_set.aggregate(Avg('media_puntuacion')) }}</p>
+{% endfor %}

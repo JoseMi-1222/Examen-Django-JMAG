@@ -87,6 +87,21 @@ def estudios_analisis(request, anyo):
     }
     return render(request, "app/estudios_analisis.html", contexto)
 
+#-------------------------------
+# VISTA: Videojuegos de un estudio con media de puntuación mayor que 7.5
+#-------------------------------    
+
+def estudios_media_puntuacion(request, estudio):    
+    estudios_media_puntuacion = Videojuego.objects.filter(
+        estudio_desarrollo__nombre__icontains=estudio,
+        analisis__media_puntuacion__gt=7.5
+    ).distinct()
+
+    contexto = {
+        'estudios_media_puntuacion': estudios_media_puntuacion
+    }
+    return render(request, "app/estudios_media_puntuacion.html", contexto)
+
 
 
 

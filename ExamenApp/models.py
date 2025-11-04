@@ -65,6 +65,10 @@ ORDER BY v.ventas_estimadas DESC
 Ejer 4
 Crea los Modelos, Urls y QuerySets correspondientes, para que puedas obtener todos los Estudios que tengan videojuegos con una análisis en un año en concreto ordenados por puntuación del análisis de mayor a menor. En esta querySet si os salen duplicados, debéis usar distinct() después de construir la querySet completa para evitarlos.
 """
+"""
+Ejer 5
+Crea los Modelos, Urls y QuerySets correspondientes, para que puedas obtener todos los videojuegos de un estudio de desarrollo en concreto que tengan una media de puntuación de análisis mayor que 7.5.
+"""
 
 class Estudio(models.Model):
     nombre = models.CharField(max_length=100)
@@ -95,4 +99,5 @@ class Analisis(models.Model):
     videojuego = models.ForeignKey('Videojuego', on_delete=models.CASCADE)
     puntuacion = models.IntegerField(null=True)
     anyo_analisis = models.IntegerField(null=True)  
+    media_puntuacion = models.FloatField(null=True)
     
